@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+</head>
+<body>
+    <h2>Product List</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - {{ product.description }}
+                {% if product.is_repaired %}
+                    (Repaired)
+                {% else %}
+                    <form action="{% url 'choose_technician' product.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Choose Technician</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
