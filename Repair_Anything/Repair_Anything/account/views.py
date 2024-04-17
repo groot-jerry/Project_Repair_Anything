@@ -12,6 +12,9 @@ from django.contrib.auth import authenticate, login
 def index(request):
     return render(request, 'index.html')
 
+def home(request):
+    return render(request, 'home.html')
+
 
 def register(request):
     msg = None

@@ -14,7 +14,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Repair Anything! </title>
+  <title>Repair Anything!</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
@@ -28,9 +28,10 @@
 
 
   <!-- Custom styles for this template -->
-  C:\Program Files\Sublime Text 3
-  <link href="static/css/style2.css" rel="stylesheet" />
+
   
+  <link href="static/css/stylee.css" rel="stylesheet" />
+
   <!-- responsive style -->
   <link href="static/css/responsive.css" rel="stylesheet" />
 
@@ -59,7 +60,6 @@
           </div>
         </div>
       </div>
-    <
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -100,6 +100,12 @@
                        </li>
                     <li class="nav-item">
                   <a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'login_view' %}" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Sign In</span></a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'register' %}" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Sign Up</span></a>
                 </li>
               </ul>
              </nav>
@@ -204,16 +210,6 @@
         <div class="row">
           <div class="col-md-20 ">
             <div class="detail-box">
-
-                  {% block content %}
-
-                          <a href="{% url 'user_login' %}">Admin Log in</a>
-                          <a href="{% url 'user_registration' %}">Customer Sign Up</a>
-                          <a href="{% url 'user_login' %}">Customer Log in</a>
-                          <a href="{% url 'register_technician' %}">Technician Sign Up</a>
-                          <a href="{% url 'technician_login' %}">Technician Log in</a>
-
-                  {% endblock %}
 
             </div>
           </div>
