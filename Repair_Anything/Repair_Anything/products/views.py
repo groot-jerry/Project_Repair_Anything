@@ -11,4 +11,4 @@ def product_list(request):
 def choose_technician(request, product_id):
     product = Product.objects.get(pk=product_id)
     # Logic to choose a technician and assign to the product
-    return redirect('product_list')  # Redirect to product list after choosing technician
+    return redirect('technician_list')  # Redirect to product list after choosing technician

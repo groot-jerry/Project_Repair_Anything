@@ -65,3 +65,7 @@ def customer(request):
 
 def technician(request):
     return render(request, 'technician.html')
+
+def technician_list(request):
+    return render(request,'technician_list.html')
+

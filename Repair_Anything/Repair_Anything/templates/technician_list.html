@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>admin page</title>
-    <style type="text/css">
+    <head> 
+        <title>Technician List</title>
+        
+        <style type="text/css">
         *{
           text-decoration: none;
         }
@@ -42,6 +42,18 @@
       </ul>
     </div>
   </nav>
-    <h1> Hello {{ user.username }} your role is Admin</h1>
-</body>
+            <div>
+                <li><h3>Amio</h3></li>
+                <li>Jahid</li>
+                <li>Zidne</li>
+                <li>Rezuan</li>
+                <li>Mehedi</li>
+            </div>
+            <div>
+                <h2>Make Payment</h2>
+                <a href="{% url 'make_payment' %}" class="button">Make Payment</a>
+
+            </div>
+        </body>
+    </head>
 </html>
