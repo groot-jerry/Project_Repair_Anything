@@ -1,5 +1,6 @@
 <!doctype html>
 {% load static %}
+{% include 'headernavbar.html' %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -17,49 +18,17 @@
     <!-- Style -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <title>Multiple user login</title>
+    <title>Log In Page</title>
   </head>
   <body>
-    <style type="text/css">
-      *{
-        text-decoration: none;
-      }
-      .navbar{
-        background: rgb(53, 117, 169); font-family: calibri; padding-right: 15px;padding-left: 15px;
-      }
-      .navdiv{
-        display: flex; align-items: center; justify-content: space-between;
-      }
-      .logo a{
-        font-size: 35px; font-weight: 600; color: white;
-      }
-      li{
-        list-style: none; display: inline-block;
-      }
-      li a{
-        color: white; font-size: 18px; font-weight: bold; margin-right: 25px;
-      }
-      button{
-        background-color: black; margin-left: 10px; border-radius: 10px; padding: 10px; width: 90px;
-      }
-      button a{
-        color: white; font-weight: bold; font-size: 15px;
-      }
-    </style>
-  </head>
-    <body>
-<nav class="navbar">
-  <div class="navdiv">
-    <div class="logo"><a href="#">Repair Anything</a> </div>
-    <ul>
-      <li><a href="{% url 'index' %}">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-   
-    
+
+    <!-- include header navbar -->
+
+    <div include-html="headernavbar.html" id="header_files"></div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/include-html.min.js"></script>
+
   <div class="content">
     <div class="container">
       <div class="row justify-content-center">
@@ -70,7 +39,7 @@
           <div class="row justify-content-center">
             <div class="col-md-12">
               <div class="form-block">
-                <h1> Log In Page</h1>
+                <h1> User Log In </h1>
                   <div class="mb-4">
                 </div>
 
