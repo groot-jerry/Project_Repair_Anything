@@ -11,6 +11,6 @@ urlpatterns = [
     path('customer/', views.customer, name='customer'),
     path('technician/', views.technician, name='technician'),
     path('technician_list/',views.technician_list, name='technician_list'),
-
+    path('review/',views.add_review, name='add_review'),
 ]
 

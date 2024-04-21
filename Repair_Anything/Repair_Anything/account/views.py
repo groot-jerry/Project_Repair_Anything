@@ -69,3 +69,6 @@ def technician(request):
 def technician_list(request):
     return render(request,'technician_list.html')
 
+def add_review(request):
+    return render(request, 'add_review.html')
+

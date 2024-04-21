@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'review',
     'products',
     'payments',
     'account.apps.AccountConfig',

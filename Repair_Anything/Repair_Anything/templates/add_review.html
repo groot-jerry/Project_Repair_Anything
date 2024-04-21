@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+{% include 'customerheadernavbar.html' %}
+
+<html lang="en">
+<body>
+<h2>Add Review for {{ technician.name }}</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit Review</button>
+  </form>
+ </body>
+
+ {% include 'footer.html' %}
+</html>
