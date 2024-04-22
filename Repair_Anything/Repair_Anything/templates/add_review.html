@@ -4,7 +4,7 @@
 
 <html lang="en">
 <body>
-<h2>Add Review for {{ technician.name }}</h2>
+<h2>Add Review for {{ User.name }}</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}

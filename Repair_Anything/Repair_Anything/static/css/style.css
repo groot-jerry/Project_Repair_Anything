@@ -22,12 +22,13 @@ a {
 
 h2 {
   font-size: 20px; }
-
-.form-block {
-  background: #fff;
-  padding: 60px;
-  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1); }
+  .form-block {
+    margin-top: 10px; /* Adjust this value to reduce the top margin */
+    margin-bottom: 10px; /* Adjust this value to reduce the bottom margin */
+    background: #fff;
+    padding: 60px;
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
   @media (max-width: 991.98px) {
     .form-block {
       padding: 30px; } }
@@ -53,7 +54,7 @@ h2 {
       -o-transition: .3s all ease;
       transition: .3s all ease; }
     .content .contents .form-group input, .content .bg .form-group input {
-      background: transparent;
+      /* background: transparent; */
       border-bottom: 1px solid #ccc; }
     .content .contents .form-group.first, .content .bg .form-group.first {
       border-top-left-radius: 7px;
@@ -206,3 +207,4 @@ h2 {
 .control--checkbox input:disabled:checked ~ .control__indicator {
   background-color: #7e0cf5;
   opacity: .2; }
+  }

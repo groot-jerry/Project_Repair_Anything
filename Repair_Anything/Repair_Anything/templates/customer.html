@@ -1,15 +1,29 @@
+
 <!DOCTYPE html>
 {% include 'customerheadernavbar.html' %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>customer page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Repair Anything</title>
 </head>
-    <body>
-  <h1> Hello {{ user.username }} Welcome to Repair Anything</h1>
-        <h2>Are you want to repair Something? Then select a product for repair </h2>
-        <a href="{% url 'products' %}">Select a Product</a>
+<body>
+
+  <header>
+    <nav>
+      <!-- Your header/navbar content -->
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Hello, {{ user.username }}!</h1>
+    <p>Welcome to Repair Anything. We are here to help you fix your devices and appliances.</p>
+    <p>Are you looking to repair something? Browse our products and services to get started.</p>
+    <a href="{% url 'products' %}" class="btn btn-primary"><h3>Browse Products</h3></a>
+  </main>
+
+ <!-- include footer -->
+ {% include 'footer.html' %}
+
 </body>
-{% include 'footer.html' %}
 </html>
