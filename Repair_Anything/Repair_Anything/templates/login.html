@@ -51,7 +51,7 @@
                     Login page
                 {% endif %}
               </span>
-                <form  method="post">
+                <form  method="post" action="{% url 'login_view' %}">
                     {% csrf_token %}
                   <div class="form-group first">
                     <label for="username">Username</label>

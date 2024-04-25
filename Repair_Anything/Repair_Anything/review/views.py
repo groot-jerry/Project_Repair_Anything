@@ -19,5 +19,4 @@ def add_review(request, technician_id):
         form = ReviewForm()
     return render(request, 'add_review.html', {'form': form, 'technician': technician})
 
-def add_review(request):
-    return render(request, 'add_review.html')
+

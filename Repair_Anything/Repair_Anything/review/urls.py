@@ -1,6 +1,7 @@
-from django.urls import path
-from . import views
+# from django.urls import path
+# from . import views
 
-urlpatterns = [
-    path('review/<int:technician_id>/add_review/', views.add_review, name='add_review'),
-]
+# urlpatterns = [
+#     path('add_review/', views.add_review, name='add_review'),
+#     path('reviewsuccess/', views.review_success, name='review_success'),
+# ]

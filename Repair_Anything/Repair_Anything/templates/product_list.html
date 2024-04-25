@@ -1,30 +1,81 @@
-
-<!DOCTYPE html>
-
 {% include 'customerheadernavbar.html' %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product List</title>
-</head>
-<body>
-    <h2>Product List</h2>
-    <ul>
+{% load static %}
+<div class="container">
+    <div class="row">
         {% for product in products %}
-            <li>
-                {{ product.name }} - {{ product.description }}
-                {% if product.is_repaired %}
-                    (Repaired)
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top product-image" alt="Product Image">
                 {% else %}
-                    <form action="{% url 'choose_technician' product.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit">Choose Technician</button>
-                    </form>
+                <img src="{% static 'images/default.jpg' %}" alt="Default Image">
                 {% endif %}
-            </li>
+                <div class="card-body product-details">
+                    <h5 class="card-title product-title">{{ product.name }}</h5>
+                    <p class="card-text product-description">{{ product.description }}</p>
+                    <a href="{% url 'technician_list' %}" class="btn btn-primary product-btn">Find Technician</a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-</body>
+    </div>
+</div>
+
 {% include 'footer.html' %}
-</html>
+<style>
+
+
+    /* styles.css */
+
+/* Product card container */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Product image */
+.product-image {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Product details */
+.product-details {
+    padding: 1rem;
+}
+
+.product-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.product-description {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.product-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.product-btn:hover {
+    background-color: #0056b3;
+}
+
+</style>

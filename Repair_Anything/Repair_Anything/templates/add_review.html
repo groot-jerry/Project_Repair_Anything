@@ -1,16 +1,23 @@
+
 <!DOCTYPE html>
-
 {% include 'customerheadernavbar.html' %}
-
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Review</title>
+</head>
 <body>
-<h2>Add Review for {{ User.name }}</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Submit Review</button>
-  </form>
- </body>
-
- {% include 'footer.html' %}
+    <h2>Add Review for {{ technician.name }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="rating">Rating:</label>
+        <input type="text" id="comment" name="comment"><br>
+        <label for="comment">Comment:</label>
+        <input type="text" id="commen" name="comment"><br><br>
+        <a href="{% url 'review_success'%}">Submit Review</a>
+    </form>
+</body>
+{% include 'footer.html' %}
 </html>
+
+

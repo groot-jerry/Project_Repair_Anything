@@ -3,23 +3,22 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Payment
-from products.models import Product
-from account import views
+from .forms import PaymentForm
 
-def make_payment(request, product_id):
-    product = Product.objects.get(pk=product_id)
+@login_required
+def make_payment(request):
     if request.method == 'POST':
-        # Logic to process payment
-        amount = request.POST.get('amount')
-        Payment.objects.create(product=product, amount=amount)
-        product.is_repaired = True
-        product.save()
-        return redirect('product_list')  # Redirect to product list after successful payment
-    return render(request, 'payments/payment.html', {'product': product})
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            payment = form.save(commit=False)
+            payment.user = request.user
+            payment.save()
+            return redirect('payment_success')
+    else:
+        form = PaymentForm()
+    return render(request, 'make_payment.html', {'form': form})
 
-def home(request):
-    return render(request, 'home.html')
-
-def index(request):
-    return render(request, 'index.html')
+def payment_success(request):
+    return render(request, 'payment_success.html')

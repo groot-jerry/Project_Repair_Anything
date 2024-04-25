@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% include 'customerheadernavbar.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technician Profile</title>
+</head>
+<body>
+    <h1>Technician Profile</h1>
+    {% if technician_profile %}
+        <p><strong>Bio:</strong> {{ technician_profile.bio }}</p>
+        <p><strong>Experience:</strong> {{ technician_profile.experience }}</p>
+        <p><strong>Skills:</strong> {{ technician_profile.skills }}</p>
+        <a href="{% url 'make_payment' %}"><button>Hire Him </button></a>
+    {% else %}
+        <p>No technician profile found.</p>
+    {% endif %}
+    <a href="{% url 'add_review' %}"><button>Give Review</button></a>
+</body>
+{% include 'footer.html' %}
+</html>

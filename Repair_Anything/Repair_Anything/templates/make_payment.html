@@ -13,7 +13,7 @@
         {% csrf_token %}
         <label for="amount">Amount:</label>
         <input type="text" id="amount" name="amount">
-        <button type="submit">Pay</button>
+        <a href="{% url 'payment_success'%}">Pay</a>
     </form>
 </body>
 {% include 'footer.html' %}

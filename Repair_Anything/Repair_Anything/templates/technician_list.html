@@ -1,32 +1,92 @@
 <!DOCTYPE html>
-
-{% include 'customerheadernavbar.html' %}
-
 <html lang="en">
-    <head> 
-        <title>Technician List</title>
-    </head>
-    <body>
-      <div>
-        <h2>
-          Here is Technician List
-        </h2>
-      </div>
-       <div>   
-          <li><p>Amio</p></li><br>
-          <li><p>Jahid</p></li><br>
-          <li><p>Zidne</p></li><br>
-          <li><p>Rezuan</p></li><br>
-          <li><p>Mehedi</p></li>
-         </div>
-        <div>
-              <h2>Make Payment</h2>
-              <a href="{% url 'make_payment' %}" class="button">Make Payment</a>
-        </div>
-        <div>
-          <h2>Review</h2>
-          <a href="{% url 'add_review' %}" class="button">Give Review</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technician List</title>
+  
+</head>
+<body>
+    {% include 'customerheadernavbar.html' %}
+    
+    <div class="container">
+        <h2>Technician List</h2>
+        <ul class="technician-list">
+            <li><a href="{% url 'technician_profile'%}">Amio</a></li>
+            <li>Jahid</li>
+            <li>Zidne</li>
+            <li>Rezuan</li>
+            <li>Mehedi</li>
+        </ul>
     </div>
-    </body>
+
     {% include 'footer.html' %}
+</body>
 </html>
+
+
+<style>
+  /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Technician List */
+.technician-list {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.technician-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.technician-list li:last-child {
+    border-bottom: none;
+}
+
+.technician-list li a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Action Buttons */
+.action-buttons {
+    margin-top: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+</style>
