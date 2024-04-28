@@ -10,10 +10,7 @@
     <h2>Add Review for {{ technician.name }}</h2>
     <form method="post">
         {% csrf_token %}
-        <label for="rating">Rating:</label>
-        <input type="text" id="comment" name="comment"><br>
-        <label for="comment">Comment:</label>
-        <input type="text" id="commen" name="comment"><br><br>
+        {% form.as_p %}
         <a href="{% url 'review_success'%}">Submit Review</a>
     </form>
 </body>

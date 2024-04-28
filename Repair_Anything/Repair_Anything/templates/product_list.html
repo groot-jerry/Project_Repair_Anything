@@ -3,17 +3,15 @@
 {% load static %}
 <div class="container">
     <div class="row">
-        {% for product in products %}
+        {% for p in products %}
         <div class="col-md-4 mb-4">
             <div class="card product-card">
-                {% if product.image %}
-                <img src="{{ product.image.url }}" class="card-img-top product-image" alt="Product Image">
-                {% else %}
-                <img src="{% static 'images/default.jpg' %}" alt="Default Image">
-                {% endif %}
-                <div class="card-body product-details">
-                    <h5 class="card-title product-title">{{ product.name }}</h5>
-                    <p class="card-text product-description">{{ product.description }}</p>
+                <div class="card-body">
+                    {% if p.image %}
+                    <img src="{{ p.image.url }}" class="card-img-top" style="..." alt="...">
+                    {% endif %}
+                    <h5 class="card-title product-title">{{ p.name }}</h5>
+                    <p class="card-text product-description">{{ p.description }}</p>
                     <a href="{% url 'technician_list' %}" class="btn btn-primary product-btn">Find Technician</a>
                 </div>
             </div>
@@ -23,10 +21,15 @@
 </div>
 
 {% include 'footer.html' %}
+
 <style>
 
 
-    /* styles.css */
+
+/* styles.css */
+
+/* Product card container */
+/* styles.css */
 
 /* Product card container */
 .product-card {
@@ -34,6 +37,14 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
+    width: 23%; /* Each product card takes up 23% of the width with 2% margin */
+    margin: 0 1%; /* Add 1% margin on each side */
+    margin-bottom: 20px; /* Add some bottom margin for spacing */
+    float: left; /* Float the product cards to the left */
+}
+
+.product-card:nth-child(4n) {
+    margin-right: 0; /* Remove right margin for the last product in each row */
 }
 
 .product-card:hover {
@@ -72,10 +83,12 @@
     padding: 0.5rem 1rem;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    display: block; /* Make the button a block element for full width */
 }
 
 .product-btn:hover {
     background-color: #0056b3;
 }
 
+}
 </style>

@@ -4,7 +4,9 @@ from django.shortcuts import render
 
 from django.shortcuts import render, redirect
 from .models import User
-from .forms import ReviewForm
+from review.forms import ReviewForm
+from django.contrib.auth.models import AbstractUser
+
 
 def add_review(request, technician_id):
     technician = User.objects.get(pk=technician_id)
@@ -20,3 +22,5 @@ def add_review(request, technician_id):
     return render(request, 'add_review.html', {'form': form, 'technician': technician})
 
 
+def review_success(request):
+    return render(request, 'review_success.html')

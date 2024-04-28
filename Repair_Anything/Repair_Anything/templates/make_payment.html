@@ -11,8 +11,7 @@
     <h2>Make Payment for {{ product.name }}</h2>
     <form method="post">
         {% csrf_token %}
-        <label for="amount">Amount:</label>
-        <input type="text" id="amount" name="amount">
+        {{ form.as_p }}
         <a href="{% url 'payment_success'%}">Pay</a>
     </form>
 </body>

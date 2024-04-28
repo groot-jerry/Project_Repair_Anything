@@ -7,10 +7,9 @@ from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
-
-
 def index(request):
     return render(request, 'index.html')
+
 
 def home(request):
     return render(request, 'home.html')
@@ -54,10 +53,11 @@ def login_view(request):
             msg = 'error validating form'
     return render(request, 'login.html', {'form': form, 'msg': msg})
 
-from django.shortcuts import render, redirect
+
 from django.contrib.auth.decorators import login_required
 from .forms import TechnicianProfileForm
 from .models import TechnicianProfile
+
 
 @login_required
 def update_profile(request):
@@ -77,7 +77,6 @@ def update_profile(request):
     return render(request, 'update_profile.html', {'form': form})
 
 
-
 def admin(request):
     return render(request, 'admin.html')
 
@@ -89,14 +88,9 @@ def customer(request):
 def technician(request):
     return render(request, 'technician.html')
 
+
 def technician_list(request):
-    return render(request,'technician_list.html')
-
-def add_review(request):
-    return render(request, 'add_review.html')
-
-def review_success(request):
-    return render(request, 'review_success.html')
+    return render(request, 'technician_list.html')
 
 
 # views.py
@@ -105,13 +99,16 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.http import HttpResponse
 
+
 def logout_view(request):
     logout(request)
     return redirect('login_view')  # Redirect to the login page after logging out
 
+
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 
 @receiver(post_save, sender=User)
 def create_technician_profile(sender, instance, created, **kwargs):
@@ -122,6 +119,7 @@ def create_technician_profile(sender, instance, created, **kwargs):
 from django.shortcuts import render
 from .models import TechnicianProfile
 from django.contrib.auth.decorators import login_required
+
 
 @login_required
 def view_technician_profile(request):
