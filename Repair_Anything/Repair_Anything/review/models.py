@@ -1,15 +1,15 @@
-# Create your models here.
+# review/models.py
 
 from django.db import models
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
-from django.conf import settings
+from account.models import User
+from account.models import TechnicianProfile
 
 class Review(models.Model):
-
-    rating = models.IntegerField()  # Assuming you want to store rating as an integer
+    technician = models.ForeignKey(TechnicianProfile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField()  # Rating out of 5, for example
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Review for {self.technician.username}"
+        return f"Review for {self.technician.user.username} by {self.user.username}"

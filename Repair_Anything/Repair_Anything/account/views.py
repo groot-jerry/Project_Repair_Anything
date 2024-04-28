@@ -122,6 +122,20 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required
+def view_u_technician_profile(request):
+    try:
+        technician_profile = request.user.technicianprofile
+    except TechnicianProfile.DoesNotExist:
+        technician_profile = None
+
+    return render(request, 'u_technician_profile.html', {'technician_profile': technician_profile})
+
+from django.shortcuts import render
+from .models import TechnicianProfile
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
 def view_technician_profile(request):
     try:
         technician_profile = request.user.technicianprofile
@@ -129,7 +143,6 @@ def view_technician_profile(request):
         technician_profile = None
 
     return render(request, 'technician_profile.html', {'technician_profile': technician_profile})
-
 # from django.shortcuts import render, redirect
 # from .models import TechnicianProfile
 # from django.contrib.auth.decorators import login_required
