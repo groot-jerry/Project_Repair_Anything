@@ -10,4 +10,5 @@ urlpatterns = [
     path('technician/<int:product_id>/', views.choose_technician, name='choose_technician')
 
 ]
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

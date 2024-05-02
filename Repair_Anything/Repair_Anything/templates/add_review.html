@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Add Review for {{ technician.name }}</h2>
-    <form method="post">
+    <form method="post" action="{% url 'add_review' %}">
         {% csrf_token %}
         {% form.as_p %}
         <a href="{% url 'review_success'%}">Submit Review</a>

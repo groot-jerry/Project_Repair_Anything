@@ -125,6 +125,9 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'images')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.User'
@@ -132,3 +135,4 @@ AUTH_USER_MODEL = 'account.User'
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+

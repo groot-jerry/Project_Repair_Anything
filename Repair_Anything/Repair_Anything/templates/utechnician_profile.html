@@ -7,7 +7,9 @@
     <title>Technician Profile</title>
 </head>
 <body>
+
     <h1>Technician Profile</h1>
+    <p>Technician ID: {{ technician_id }}</p>
     {% if technician_profile %}
         <p><strong>Bio:</strong> {{ technician_profile.bio }}</p>
         <p><strong>Experience:</strong> {{ technician_profile.experience }}</p>
@@ -16,7 +18,9 @@
     {% else %}
         <p>No technician profile found.</p>
     {% endif %}
-    <a href="{% url 'add_review' %}"><button>Give Review</button></a>
+    <a href="{% url 'add_review' %}">Add Review</a>
+
+    <a href="{% url 'make_payment' %}"><button>Hire Him </button></a>
 </body>
 {% include 'footer.html' %}
 </html>

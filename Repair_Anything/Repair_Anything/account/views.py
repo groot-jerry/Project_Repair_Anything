@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth import authenticate, login
-
+import random
 
 # Create your views here.
 def index(request):
@@ -28,6 +28,36 @@ def register(request):
     else:
         form = SignUpForm()
     return render(request, 'register.html', {'form': form, 'msg': msg})
+
+from django.shortcuts import render, redirect
+from .forms import SignUpForm
+from .models import User
+import random  # Import the random module at the top of your views.py
+
+def register(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            if user.is_technician:
+                # Generate technician ID
+                user.technician_id = generate_technician_id()
+                user.save()
+                return redirect('login_view')  # Redirect to login page after successful registration
+            else:
+                msg = 'Form is not valid'  # If user is not a technician
+        else:
+            msg = 'Form is not valid'  # If form validation fails
+    else:
+        form = SignUpForm()
+    return render(request, 'register.html', {'form': form, 'msg': msg})
+
+def generate_technician_id():
+    # Generate a unique technician ID
+    # You can implement your own logic here
+    # For example, using UUID or a combination of username and a random number
+    return 'TECH' + str(random.randint(10000, 99999))
+
 
 
 def login_view(request):
@@ -122,20 +152,6 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required
-def view_u_technician_profile(request):
-    try:
-        technician_profile = request.user.technicianprofile
-    except TechnicianProfile.DoesNotExist:
-        technician_profile = None
-
-    return render(request, 'u_technician_profile.html', {'technician_profile': technician_profile})
-
-from django.shortcuts import render
-from .models import TechnicianProfile
-from django.contrib.auth.decorators import login_required
-
-
-@login_required
 def view_technician_profile(request):
     try:
         technician_profile = request.user.technicianprofile
@@ -143,18 +159,20 @@ def view_technician_profile(request):
         technician_profile = None
 
     return render(request, 'technician_profile.html', {'technician_profile': technician_profile})
-# from django.shortcuts import render, redirect
-# from .models import TechnicianProfile
-# from django.contrib.auth.decorators import login_required
-# from django.urls import reverse
 
-# @login_required
-# def view_technician_profile(request):
-#     try:
-#         technician_profile = request.user.technicianprofile
-#         if not technician_profile.is_complete():  # Check if profile is complete
-#             return redirect(reverse('update_profile'))  # Redirect to profile update page
-#     except TechnicianProfile.DoesNotExist:
-#         return redirect(reverse('update_profile'))  # Redirect to profile update page
+# from django.shortcuts import render, get_object_or_404
+# from .models import utechnicianProfile
 
-#     return render(request, 'technician_profile.html', {'technician_profile': technician_profile})
+# def view_utechnician_profile(request, technician_id):
+#     # Retrieve the technician object from the database, or return a 404 error if not found
+#     technician = get_object_or_404(utechnicianProfile, id=technician_id)
+#     context = {
+#         'technician': technician,
+#         'technician_id': technician_id,
+#     }
+#     return render(request, 'view_utechnician_profile.html', context)
+
+def view_utechnician_profile(request):
+   
+    return render(request, 'utechnician_profile.html')
+

@@ -1,8 +1,12 @@
 from django import forms
+from .models import Payment
 
 class PaymentForm(forms.ModelForm):
-    name = forms.CharField(label='Your Name', max_length=100)
-    product_name = forms.CharField(label='Product Name', max_length=100)
-    technician_name = forms.CharField(label='Technician Name', max_length=100)
-    # technician_id = forms.IntegerField(label='Technician ID')
-    amount = forms.DecimalField(label='Amount')
+    class Meta:
+        model = Payment
+        fields = ['amount']
+        labels = {'amount': 'Amount'}
+
+    def __init__(self, *args, **kwargs):
+        super(PaymentForm, self).__init__(*args, **kwargs)
+        self.fields['amount'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter payment amount'})

@@ -1,15 +1,13 @@
-# review/models.py
-
 from django.db import models
 from account.models import User
 from account.models import TechnicianProfile
+from django.utils import timezone
 
 class Review(models.Model):
-    technician = models.ForeignKey(TechnicianProfile, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.IntegerField()  # Rating out of 5, for example
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_reviews')
+    technician = models.CharField(max_length=100, default='default_value')
+    rating = models.IntegerField()
     comment = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
+    
     def __str__(self):
         return f"Review for {self.technician.user.username} by {self.user.username}"
