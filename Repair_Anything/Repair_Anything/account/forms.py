@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User
-import random
 
 
 class LoginForm(forms.Form):
@@ -50,8 +49,6 @@ class SignUpForm(UserCreationForm):
             }
         )
     )
-
-    is_technician = forms.BooleanField(required=False, label='Are you a technician?')
 
     class Meta:
         model = User
